@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Londrina+Shadow&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Trirong"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <title>Disappearing Sundae Game</title>
+  </head>
+  <body>
+    <h1>Disappearing Sundae Game</h1>
+    <label class="option-label" for="wordOptions">Select an Option:</label>
+    <div>
+      <button class="flavors-button" onclick="startGame('flavors')">
+        Flavors
+      </button>
+      <button class="toppings-button" onclick="startGame('toppings')">
+        Toppings
+      </button>
+    </div>
+    <div id="sundae">
+      <div class="base"></div>
+      <div class="scoop"></div>
+    </div>
+    <div id="word"><!--Word that will be guessed--></div>
+    <div id="letterButtons"></div>
+
+    <script src="index.js"></script>
+  </body>
+</html>

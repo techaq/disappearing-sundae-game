@@ -1,0 +1,93 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* font-family: ""; */
+}
+
+body {
+  background-color: #fff8dc;
+  text-align: center;
+}
+
+.bottomContainer {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+h1 {
+  color: #da8ec0;
+  font-family: "Londrina Shadow", cursive;
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.option-label {
+  font-family: "Trirong", serif;
+  font-size: 20px;
+  margin: 10px 0;
+  color: #333;
+}
+
+button {
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: #f4a261;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.flavors-button {
+  background-color: #eeafc5;
+  color: #f7ccd1;
+}
+
+.toppings-button {
+  background-color: #eeafc5;
+  color: #f7ccd1;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.sundaeContainer {
+  align-items: center;
+}
+
+#sundae {
+  text-align: center;
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.base {
+  width: 100px;
+  height: 20px;
+  background-color: #654321;
+  border-radius: 8px;
+  margin-top: 300px;
+  text-align: center;
+}
+
+.scoop {
+  width: 100px;
+  height: 120px;
+  background-color: #ffb6c1;
+  border-radius: 100px / 80px;
+  margin-top: -100px;
+  z-index: 1;
+}
+
+#word {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}

@@ -23,6 +23,15 @@
   </head>
   <body>
     <h1>Disappearing Sundae Game</h1>
+    
+<div class = "sundaeContainer">
+    <div id="sundae">
+      <div class="base"></div>
+      <div class="scoop"></div>
+    </div>
+  </div>
+
+    <div class = "bottomContainer">
     <label class="option-label" for="wordOptions">Select an Option:</label>
     <div>
       <button class="flavors-button" onclick="startGame('flavors')">
@@ -32,10 +41,8 @@
         Toppings
       </button>
     </div>
-    <div id="sundae">
-      <div class="base"></div>
-      <div class="scoop"></div>
-    </div>
+  </div>
+
     <div id="word"><!--Word that will be guessed--></div>
     <div id="letterButtons"></div>
 

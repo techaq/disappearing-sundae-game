@@ -12,10 +12,23 @@ body {
 
 .container {
   display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.left-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 20px;
+}
+
+.main-content {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  flex: 1;
 }
 
 h1 {
@@ -39,6 +52,7 @@ h1 {
   background-color: #fde0b5;
   border-radius: 50%;
   overflow: hidden;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .bowl {
@@ -51,6 +65,7 @@ h1 {
   background-color: lightblue;
   border-radius: 50%;
   z-index: 1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
 }
 
 .ice-cream1,
@@ -63,20 +78,24 @@ h1 {
   width: 100px;
   height: 40px;
   border-radius: 50%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); 
 }
 
 .ice-cream1 {
   background-color: #f9ad6a;
+  background-image: radial-gradient(#f9ad6a, #f9ad6a 60%, #f29c9c); 
 }
 
 .ice-cream2 {
   bottom: 80px;
-  background-color: #f29c9c
+  background-color: #f29c9c;
+  background-image: radial-gradient(#f29c9c, #f29c9c 60%, #b6e6b6); 
 }
 
 .ice-cream3 {
   bottom: 120px;
-  background-color: #b6e6b6
+  background-color: #b6e6b6;
+  background-image: radial-gradient(#b6e6b6, #b6e6b6 60%, #d2b48c); 
 }
 
 .cherry {
@@ -88,6 +107,7 @@ h1 {
   height: 20px;
   background-color: #ff0000;
   border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 .options-container {
@@ -102,8 +122,8 @@ h1 {
 
 button {
   font-family: "Trirong", serif;
-  font-size: 10px;
-  padding: 10px 10px;
+  font-size: 15px;
+  padding: 15px 15px;
   margin: 5px;
   background-color: #d2b48c;
   color: #4b2d2a;
@@ -117,14 +137,14 @@ button {
   font-size: 20px;
   background-color: #f29c9c;
   color: #b6e6b6;
-  padding: 20px 20px;
+  padding: 10px 10px;
 }
 
 .toppings-button {
   font-size: 20px;
   background-color: #f29c9c;
   color: #b6e6b6;
-  padding: 20px 20px;
+  padding: 10px 10px;
 }
 
 button:disabled {
@@ -140,6 +160,7 @@ button:disabled {
 }
 
 #guessesLeft {
+  display: none;
   font-family: "Trirong", serif;
   font-size: 20px;
   color: #f9ad6a;
@@ -149,6 +170,7 @@ button:disabled {
 }
 
 #score {
+  display: none;
   font-family: "Trirong", serif;
   font-size: 20px;
   color: #f9ad6a;

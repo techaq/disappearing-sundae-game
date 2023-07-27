@@ -34,6 +34,8 @@ function startGame(wordType) {
   incorrectGuesses = 0;
   createLetterButtons();
   displayWord();
+  document.getElementById("guessesLeft").style.display = "block";
+  document.getElementById("score").style.display = "block";
 }
 
 function getRandomWord(wordType) {

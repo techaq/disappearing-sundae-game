@@ -26,6 +26,7 @@ let guessedLetters = [];
 let incorrectGuesses = 0;
 const maxIncorrectGuesses = 5;
 const alphabet = "abcdefghijklmnopqrstuvwxyz";
+let score = 0; 
 
 function startGame(wordType) {
   selectedWord = getRandomWord(wordType);
@@ -79,11 +80,23 @@ function checkLetter(letter) {
   }
 }
 
+function showHint () {
+  if(guessedLetters.length < selectedWord.length) {
+    const unguessedLetters = selectedWord.split("").filter((letter) => !guessedLetters.includes(letter));
+    const hintLetter = unguessedLetters[0];
+    guessedLetters.push(hintLetter);
+    displayWord();
+  }
+}
+
 function checkWinOrLoss() {
   if (guessedLetters.length > 0) {
     const wrongGuesses = guessedLetters.filter((letter) => !selectedWord.includes(letter));
     incorrectGuesses = wrongGuesses.length;
   }
+
+  const guessesLeft = maxIncorrectGuesses - incorrectGuesses;
+  document.getElementById("guessesLeft").innerText = `Guesses Left: ${guessesLeft}`
 
   if (incorrectGuesses >= maxIncorrectGuesses) {
      // Player has lost the game

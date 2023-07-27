@@ -2,13 +2,71 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  /* font-family: ""; */
 }
 
 body {
   background-color: #fff8dc;
-  text-align: center;
+  text-align: center; 
 }
+
+.sundae {
+  position: relative;
+  width: 200px;
+  height: 300px;
+  background-color: #fde0b5;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.bowl {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 70px;
+  background-color: #d2b48c;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.ice-cream1,
+.ice-cream2
+.ice-cream3 {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.ice-cream1 {
+  background-color: #f9ad6a;
+}
+
+.ice-cream2 {
+  bottom: 100px;
+  background-color: #f29c9c
+}
+
+.ice-cream3 {
+  bottom: 135px;
+  background-color: #b6e6b6
+}
+
+.cherry {
+  position: absolute; 
+  bottom: 155px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: #ff0000;
+  border-radius: 50%;
+}
+
 
 .bottomContainer {
   font-size: 16px;
@@ -27,15 +85,15 @@ h1 {
   font-family: "Trirong", serif;
   font-size: 20px;
   margin: 10px 0;
-  color: #333;
+  color: #6ACBDE;
 }
 
 button {
-  font-family: "Arial", sans-serif;
-  font-size: 20px;
-  padding: 10px 20px;
+  font-family: "Trirong", serif;
+  font-size: 10px;
+  padding: 10px 10px;
   margin: 5px;
-  background-color: #f4a261;
+  background-color: #a57e56;
   color: white;
   border: none;
   border-radius: 4px;
@@ -44,13 +102,17 @@ button {
 }
 
 .flavors-button {
+  font-size: 20px;
   background-color: #eeafc5;
-  color: #f7ccd1;
+  color: #6ACBDE;
+  padding: 20px 20px;
 }
 
 .toppings-button {
+  font-size: 20px;
   background-color: #eeafc5;
-  color: #f7ccd1;
+  color: #6ACBDE;
+  padding: 20px 20px;
 }
 
 button:disabled {
@@ -58,36 +120,9 @@ button:disabled {
   cursor: not-allowed;
 }
 
-.sundaeContainer {
-  align-items: center;
-}
-
-#sundae {
-  text-align: center;
-  font-size: 48px;
-  margin-bottom: 20px;
-}
-
-.base {
-  width: 100px;
-  height: 20px;
-  background-color: #654321;
-  border-radius: 8px;
-  margin-top: 300px;
-  text-align: center;
-}
-
-.scoop {
-  width: 100px;
-  height: 120px;
-  background-color: #ffb6c1;
-  border-radius: 100px / 80px;
-  margin-top: -100px;
-  z-index: 1;
-}
-
 #word {
   text-align: center;
+  font-family: "Londrina Shadow", cursive;
   font-size: 24px;
   margin-bottom: 20px;
 }

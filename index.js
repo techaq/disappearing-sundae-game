@@ -1,32 +1,36 @@
 const flavorsArray = [
-  "Vanilla",
-  "Strawberry",
-  "Chocolate",
-  "Neopolitan",
-  "Mint Chocolate Chip",
-  "Butter Pecan",
-  "Cookies n Cream",
-  "Superman",
-  "Cookie Dough",
-  "Matcha"
+  "vanilla",
+  "strawberry",
+  "chocolate",
+  "neopolitan",
+  "mint chocolate chip",
+  "butter pecan",
+  "cookies n cream",
+  "superman",
+  "cookie dough",
+  "match"
 ];
 const toppingsArray = [
-  "Sprinkles",
-  "Peanuts",
-  "Hot Fudge",
-  "Caramel",
-  "Strawberry Sauce",
-  "Cherry",
-  "Whipped Cream",
-  "Oreo"
+  "sprinkles",
+  "peanuts",
+  "hot fudge",
+  "caramel",
+  "strawberry sauce",
+  "cherry",
+  "whipped cream",
+  "oreo"
 ];
 
 let selectedWord = "";
 let guessedLetters = [];
+let incorrectGuesses = 0;
+const maxIncorrectGuesses = 5;
+const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
 function startGame(wordType) {
   selectedWord = getRandomWord(wordType);
   guessedLetters = [];
+  incorrectGuesses = 0;
   createLetterButtons();
   displayWord();
 }
@@ -37,7 +41,6 @@ function getRandomWord(wordType) {
 }
 
 function createLetterButtons() {
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const letterButtonsDiv = document.getElementById("letterButtons");
   letterButtonsDiv.innerHTML = "";
 
@@ -55,10 +58,7 @@ function displayWord() {
   wordDisplay.innerText = "";
 
   for (let letter of selectedWord) {
-    if (
-      guessedLetters.includes(letter.toUpperCase()) ||
-      guessedLetters.includes(letter.toLowerCase())
-    ) {
+    if (guessedLetters.includes(letter)) {
       wordDisplay.innerText += letter;
     } else if (letter === " ") {
       wordDisplay.innerText += "  ";
@@ -66,6 +66,8 @@ function displayWord() {
       wordDisplay.innerText += "_ ";
     }
   }
+
+  checkWinOrLoss();
 }
 
 function checkLetter(letter) {
@@ -76,3 +78,42 @@ function checkLetter(letter) {
     displayWord();
   }
 }
+
+function checkWinOrLoss() {
+  if (guessedLetters.length > 0) {
+    const wrongGuesses = guessedLetters.filter((letter) => !selectedWord.includes(letter));
+    incorrectGuesses = wrongGuesses.length;
+  }
+
+  if (incorrectGuesses >= maxIncorrectGuesses) {
+     // Player has lost the game
+    alert("You lost! The sundae has disappeared.");
+    endGame();
+  } else if (!document.getElementById("word").innerText.includes("_")) {
+    // Player has won the game
+    alert("Congratulations! You won!");
+    score++;
+    updateScore();
+    endGame();
+  }
+}
+
+function endGame() {
+  document.getElementById("sundaeImage").style.display = "none";
+  document.getElementById("letterButtons").style.display = "none";
+  document.getElementById("word").style.display = "none";
+  document.getElementById("replayButton").style.display = "block";
+}
+
+function replayGame() {
+  document.getElementById("options").style.display = "block";
+  document.getElementById("replayButton").style.display = "none";
+  startGame("flavors"); // Start a new game with flavors by default, change as needed
+}
+
+function updateScore() {
+  document.getElementById("score").innerText = `Score: ${score}`;
+}
+
+// Initial display, hide game-related elements
+updateScore();

@@ -178,3 +178,41 @@ button:disabled {
   margin: 20px;
 }
 
+.right-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+.hint-button,
+.reset-button {
+  font-family: "Trirong", serif;
+  font-size: 15px;
+  padding: 15px 15px;
+  margin: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  width: 120px; /* Adding width to both buttons to make them wider */
+}
+
+.hint-button {
+  background-color: #f29c9c;
+  color: #b6e6b6;
+}
+
+.reset-button {
+  background-color: #d2b48c;
+  color: #4b2d2a;
+}
+
+.hint-button:disabled,
+.reset-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

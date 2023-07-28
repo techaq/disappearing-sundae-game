@@ -14,6 +14,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column; 
   height: 100vh;
 }
 
@@ -31,6 +32,7 @@ body {
   align-items: center;
   flex: 1;
 }
+
 /* heading styles */
 h1 {
   color: #f29c9c;
@@ -38,6 +40,13 @@ h1 {
   text-align: center;
   font-size: 50px;
   margin-bottom: 20px;
+}
+
+.letters-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px; /* Add margin to push the buttons down */
 }
 
 /* sundae styles */
@@ -112,18 +121,11 @@ h1 {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* options and buttons styles */
-.options-container {
-  font-family: "Trirong", serif;
-  font-size: 30px;
-  margin: 10px 0;
-  color: #f9ad6a;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
+/* buttons styles */
 button {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
   font-family: "Trirong", serif;
   font-size: 15px;
   padding: 15px 15px;
@@ -136,20 +138,11 @@ button {
   transition: opacity 0.3s ease;
 }
 
-.flavors-button,
-.toppings-button  {
-  font-size: 20px;
-  background-color: #f29c9c;
-  color: #b6e6b6;
-  padding: 10px 10px;
-}
-
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-/* game related sytles */
 #word {
   text-align: center;
   font-family: "Londrina Shadow", cursive;
@@ -157,8 +150,7 @@ button:disabled {
   margin-bottom: 20px;
 }
 
-#guessesLeft,
-#score {
+#guessesLeft {
   display: none;
   font-family: "Trirong", serif;
   font-size: 20px;
@@ -168,7 +160,15 @@ button:disabled {
   margin-top: 20px;
 }
 
-/* right sidebar styles */
+#score {
+  display: none;
+  font-family: "Trirong", serif;
+  font-size: 20px;
+  color: #f9ad6a;
+  text-align: left;
+  margin: 20px;
+}
+
 .right-sidebar {
   display: flex;
   flex-direction: column;
@@ -189,12 +189,13 @@ button:disabled {
   border-radius: 4px;
   cursor: pointer;
   transition: opacity 0.3s ease;
-  width: 120px; /* Adding width to both buttons to make them wider */
+  width: 120px; 
 }
 
 .hint-button {
   background-color: #f29c9c;
   color: #4b2d2a;
+  margin-top: 20x;
 }
 
 .reset-button {

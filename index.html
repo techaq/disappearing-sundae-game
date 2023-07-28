@@ -21,15 +21,12 @@
   <title>Disappearing Sundae Game</title>
 </head>
 <body>
+  <h1>Disappearing Sundae Game</h1>
   <div class="container">
     <div class="left-sidebar">
-      <div id="guessesLeft">Guesses Left: 5</div>
-      <div id="score">Score: 0</div>
     </div>
 
-    <div class="main-content">
-      <h1>Disappearing Sundae Game</h1>
-
+    <div class="main-content"> 
       <div class="sundae-container">
         <div class="sundae">
           <div class="bowl">
@@ -40,27 +37,21 @@
           </div>
         </div>
       </div>
-
-      <div class="options-container">
-        <label class="options-container" for="wordOptions">Select an Option:</label>
-        <div>
-          <button class="flavors-button" onclick="startGame('flavors')">
-            Flavors
-          </button>
-          <button class="toppings-button" onclick="startGame('toppings')">
-            Toppings
-          </button>
-        </div>
-      </div>
+    </div>
 
       <div id="word"><!--Word that will be guessed--></div>
-      <div id="letterButtons"></div>
-      <div class="right-sidebar">
-        <button class="hint-button" id="hintButton" onclick="showHint()">Hint</button>
-        <button class="reset-button" onclick="replayGame()">Reset</button>
+
+      <div class="letters-container">
+        <div id="letterButtonsRow1"></div>
+        <div id="letterButtonsRow2"></div>
       </div>
     </div>
-  </div>
+      
+      <div class="right-sidebar">
+        <button class="hint-button" id="hintButton" onclick="showHint()">Hint</button>
+        <button class="reset-button" onclick="replayGame()" id="replayButton">Reset</button>
+      </div>
+    </div>
 
   <script src="index.js"></script>
 </body>

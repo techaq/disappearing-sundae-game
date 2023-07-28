@@ -24,6 +24,7 @@
   <h1>Disappearing Sundae Game</h1>
   <div class="container">
     <div class="left-sidebar">
+      <!-- Left sidebar content here -->
     </div>
 
     <div class="main-content"> 
@@ -37,19 +38,25 @@
           </div>
         </div>
       </div>
-    </div>
-
+      
       <div id="word"><!--Word that will be guessed--></div>
 
       <div class="letters-container">
         <div id="letterButtonsRow1"></div>
         <div id="letterButtonsRow2"></div>
       </div>
-    </div>
       
       <div class="right-sidebar">
         <button class="hint-button" id="hintButton" onclick="showHint()">Hint</button>
         <button class="reset-button" onclick="replayGame()" id="replayButton">Reset</button>
+        <div id="guessesLeft">Guesses Left: 5</div>
+        <div id="score">Score: 0</div>
+        <label for="wordsToSolveSelect">Total Words to Solve:</label>
+        <select id="wordsToSolveSelect" onchange="updateWordsToSolve()">
+          <option value="5" selected>5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+        </select>
       </div>
     </div>
 

@@ -1,23 +1,9 @@
 // flavors array
 const flavorsAndToppingsArray = [
-  "vanilla",
-  "strawberry",
-  "chocolate",
-  "neopolitan",
-  "mint chocolate chip",
-  "butter pecan",
-  "cookies n cream",
-  "superman",
-  "cookie dough",
-  "matcha",
-  "sprinkles",
-  "peanuts",
-  "hot fudge",
-  "caramel",
-  "strawberry sauce",
-  "cherry",
-  "whipped cream",
-  "oreo"
+  "vanilla", "strawberry", "chocolate", "neopolitan", "mint chocolate chip",
+  "butter pecan", "cookies n cream", "superman", "cookie dough", "matcha",
+  "sprinkles", "peanuts", "hot fudge", "caramel", "strawberry sauce",
+  "cherry", "whipped cream", "oreo"
 ];
 
 // variables
@@ -30,6 +16,7 @@ let hintsUsed = 0;
 const alphabet = "abcdefghijklmnopqrstuvwxyz";
 let score = 0;
 let totalWordsToSolve = 5; // default - can be changed
+let wordsSolved = 0; // Initialize the wordsSolved variable
 
 // Function to update the total words to solve based on the dropdown selection
 function updateWordsToSolve() {
@@ -37,11 +24,13 @@ function updateWordsToSolve() {
   totalWordsToSolve = parseInt(wordsToSolveSelect.value);
 }
 
+// Function to get a random word from the flavors array
 function getRandomWord() {
   if (flavorsAndToppingsArray.length === 0) return "";
   return flavorsAndToppingsArray[Math.floor(Math.random() * flavorsAndToppingsArray.length)];
 }
 
+// Function to create letter buttons for the game
 function createLetterButtons() {
   const letterButtonsRow1 = document.getElementById("letterButtonsRow1");
   const letterButtonsRow2 = document.getElementById("letterButtonsRow2");
@@ -63,8 +52,24 @@ function createLetterButtons() {
   }
 }
 
-startGame();
+// Function to start the game
+function startGame() {
+  selectedWord = getRandomWord();
+  guessedLetters = [];
+  incorrectGuesses = 0;
+  hintsUsed = 0; // Reset the hints used count when starting a new round
+  createLetterButtons();
+  displayWord();
+  checkHintsLimit(); // Check and update the state of hint button
+  document.getElementById("hintButton").disabled = false; // Enable the hint button at the start of a round
+  document.getElementById("guessesLeft").innerText = `Guesses Left: ${maxIncorrectGuesses}`;
+  document.getElementById("score").innerText = `Score: ${score}`;
+  document.getElementById("hintButton").innerText = `Show Hint (${maxHintsPerRound} left)`;
+  document.getElementById("replayButton").style.display = "none"; // Hide the replay button at the start of a round
+}
+// startGame();
 
+// Function to display the word with guessed letters
 function displayWord() {
   const wordDisplay = document.getElementById("word");
   wordDisplay.innerText = "";
@@ -82,6 +87,7 @@ function displayWord() {
   checkWinOrLoss();
 }
 
+// Function to check if the guessed letter is correct
 function checkLetter(letter) {
   if (!guessedLetters.includes(letter)) {
     guessedLetters.push(letter);
@@ -91,6 +97,7 @@ function checkLetter(letter) {
   }
 }
 
+// Function to show a hint if available
 function showHint() {
   if (guessedLetters.length < selectedWord.length && hintsUsed < maxHintsPerRound) {
     const unguessedLetters = selectedWord.split("").filter((letter) => !guessedLetters.includes(letter));
@@ -98,10 +105,11 @@ function showHint() {
     guessedLetters.push(hintLetter);
     displayWord();
     hintsUsed++;
-    checkHintsLimit(); // checks if the hints limit has been reached
+    checkHintsLimit(); // Check if the hints limit has been reached
   }
 }
 
+// Function to check if hints limit is reached and update the hint button state
 function checkHintsLimit() {
   const hintsLeft = maxHintsPerRound - hintsUsed;
   const hintButton = document.getElementById("hintButton");
@@ -114,33 +122,14 @@ function checkHintsLimit() {
   }
 }
 
-// starts the game
-function startGame() {
-  selectedWord= getRandomWord();
-  guessedLetters = [];
-  incorrectGuesses = 0;
-  hintsUsed = 0; // Reset the hints used count when starting a new round
-  createLetterButtons();
-  displayWord();
-  checkHintsLimit(); // check and update the state of hint button
-  document.getElementById("hintButton").disabled = false; // enable the hint button @ start of round
-  document.getElementById("guessesLeft").innerText = `Guesses Left: ${maxIncorrectGuesses}`;
-  document.getElementById("score").innerText = `Score: ${score}`;
-  document.getElementById("hintButton").innerText = `Show Hint (${maxHintsPerRound} left)`;
-  document.getElementById("replayButton").style.display = "none"; // Hide the replay button at the start of a round
-}
-
-let totalIncorrectGuesses = 0;
-let wordsSolved = 0;
-let guessesLeft = maxIncorrectGuesses;
-
+// Function to check if the player has won or lost
 function checkWinOrLoss() {
   if (guessedLetters.length > 0) {
     const wrongGuesses = guessedLetters.filter((letter) => !selectedWord.includes(letter));
     incorrectGuesses = wrongGuesses.length;
   }
 
-  guessesLeft = maxIncorrectGuesses - incorrectGuesses;
+  const guessesLeft = maxIncorrectGuesses - incorrectGuesses;
   document.getElementById("guessesLeft").innerText = `Guesses Left: ${guessesLeft}`;
 
   if (incorrectGuesses >= maxIncorrectGuesses) {
@@ -151,27 +140,30 @@ function checkWinOrLoss() {
     // Player has won the word
     alert(`Congratulations! You guessed the word "${selectedWord}" correctly!`);
     wordsSolved++;
+    score++;
     updateScore();
     endWord();
   }
 }
 
+// Function to handle the end of the current word
 function endWord() {
   // Reset the elements for the next word
   guessedLetters = [];
   hintsUsed = 0;
+  incorrectGuesses = 0;
   createLetterButtons();
   selectedWord = getRandomWord(); // Get a new word
   displayWord();
   document.getElementById("hintButton").disabled = false;
   document.getElementById("replayButton").style.display = "none";
-  incorrectGuesses = 0;
 
   if (wordsSolved >= totalWordsToSolve || totalIncorrectGuesses >= totalWordsToSolve) {
     endGame();
   }
 }
 
+// Function to handle the end of the game
 function endGame() {
   // Game over
   if (wordsSolved >= totalWordsToSolve) {
@@ -186,20 +178,37 @@ function endGame() {
   document.getElementById("replayButton").style.display = "block";
 }
 
+// Function to increase the player's score
+function increaseScore() {
+  score++;
+  updateScore();
+}
+
+// Function to reset the game after a correct word guess
+function resetGame() {
+  guessedLetters = [];
+  incorrectGuesses = 0;
+  hintsUsed = 0;
+  createLetterButtons();
+  displayWord();
+  document.getElementById("hintButton").disabled = false;
+  document.getElementById("hintButton").innerText = `Show Hint (${maxHintsPerRound} left)`;
+  document.getElementById("guessesLeft").innerText = `Guesses Left: ${maxIncorrectGuesses}`;
+}
+
+// Function to replay the game
 function replayGame() {
   document.getElementById("replayButton").style.display = "none";
   wordsSolved = 0; // Reset wordsSolved when replaying the game
   score = 0; // Reset score when replaying the game
   guessesLeft = maxIncorrectGuesses; // Reset guessesLeft when replaying the game
-  startGame(); // Start a new game 
-
-  // Reset the elements that were hidden at the end of the previous round
-  // document.getElementById("sundaeImage").style.display = "block";
-  document.getElementById("letterButtonsRow1").style.display = "block";
-  document.getElementById("letterButtonsRow2").style.display = "block";
-  document.getElementById("word").style.display = "block";
+  startGame(); // Start a new game
 }
 
+// Function to update the player's score
 function updateScore() {
   document.getElementById("score").innerText = `Score: ${score}`;
 }
+
+// The initial call to start the game
+startGame();

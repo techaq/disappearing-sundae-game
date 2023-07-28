@@ -7,53 +7,38 @@
 
 body {
   background-color: #fff8dc;
-  text-align: center; 
+  text-align: center;
 }
 
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column; 
-  height: 100vh;
-}
-
-.left-sidebar {
-  display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-left: 20px;
+  height: 100vh;
 }
 
 .main-content {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 1;
+  flex-direction: column;
+  margin-top: 20px;
 }
 
 /* heading styles */
 h1 {
   color: #f29c9c;
   font-family: "Londrina Shadow", cursive;
-  text-align: center;
   font-size: 50px;
   margin-bottom: 20px;
 }
 
-.letters-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px; /* Add margin to push the buttons down */
-}
-
-/* sundae styles */
 .sundae-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .sundae {
@@ -76,7 +61,7 @@ h1 {
   background-color: #add8e6;
   border-radius: 50%;
   z-index: 1;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .ice-cream1,
@@ -89,28 +74,28 @@ h1 {
   width: 100px;
   height: 40px;
   border-radius: 50%;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .ice-cream1 {
   background-color: #f9ad6a;
-  background-image: radial-gradient(#f9ad6a, #f9ad6a 60%, #f29c9c); 
+  background-image: radial-gradient(#f9ad6a, #f9ad6a 60%, #f29c9c);
 }
 
 .ice-cream2 {
   bottom: 80px;
   background-color: #f29c9c;
-  background-image: radial-gradient(#f29c9c, #f29c9c 60%, #b6e6b6); 
+  background-image: radial-gradient(#f29c9c, #f29c9c 60%, #b6e6b6);
 }
 
 .ice-cream3 {
   bottom: 120px;
   background-color: #b6e6b6;
-  background-image: radial-gradient(#b6e6b6, #b6e6b6 60%, #d2b48c); 
+  background-image: radial-gradient(#b6e6b6, #b6e6b6 60%, #d2b48c);
 }
 
 .cherry {
-  position: absolute; 
+  position: absolute;
   bottom: 180px;
   left: 50%;
   transform: translateX(-50%);
@@ -119,6 +104,13 @@ h1 {
   background-color: #ff0000;
   border-radius: 50%;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.letters-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
 }
 
 /* buttons styles */
@@ -150,8 +142,8 @@ button:disabled {
   margin-bottom: 20px;
 }
 
-#guessesLeft {
-  display: none;
+#guessesLeft,
+#score {
   font-family: "Trirong", serif;
   font-size: 20px;
   color: #f9ad6a;
@@ -160,23 +152,11 @@ button:disabled {
   margin-top: 20px;
 }
 
-#score {
-  display: none;
-  font-family: "Trirong", serif;
-  font-size: 20px;
-  color: #f9ad6a;
-  text-align: left;
-  margin: 20px;
-}
-
 .right-sidebar {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
+  margin-top: 20px;
 }
 
 .hint-button,
@@ -189,13 +169,13 @@ button:disabled {
   border-radius: 4px;
   cursor: pointer;
   transition: opacity 0.3s ease;
-  width: 120px; 
+  width: 120px;
 }
 
 .hint-button {
   background-color: #f29c9c;
   color: #4b2d2a;
-  margin-top: 20x;
+  margin-top: 20px;
 }
 
 .reset-button {

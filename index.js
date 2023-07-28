@@ -6,6 +6,15 @@ const flavorsAndToppingsArray = [
   "cherry", "whipped cream", "oreo"
 ];
 
+// Function to get a random word from the flavors array
+function getRandomWord() {
+  if (flavorsAndToppingsArray.length === 0) return "";
+  const randomIndex = Math.floor(Math.random() * flavorsAndToppingsArray.length);
+  const word = flavorsAndToppingsArray[randomIndex];
+  flavorsAndToppingsArray.splice(randomIndex, 1); // Remove the word from the array
+  return word;
+}
+
 // variables
 let selectedWord = "";
 let guessedLetters = [];
@@ -142,6 +151,9 @@ function checkWinOrLoss() {
     wordsSolved++;
     score++;
     updateScore();
+    hintsUsed = 0; // Reset the hint count to 0
+    document.getElementById("hintButton").disabled = false; // Reset the hint button
+    document.getElementById("hintButton").innerText = `Show Hint (${maxHintsPerRound} left)`; // Update the hint button text
     endWord();
   }
 }
@@ -155,10 +167,10 @@ function endWord() {
   createLetterButtons();
   selectedWord = getRandomWord(); // Get a new word
   displayWord();
-  document.getElementById("hintButton").disabled = false;
+  document.getElementById("hintButton").disabled = false; // Reset the hint button
   document.getElementById("replayButton").style.display = "none";
 
-  if (wordsSolved >= totalWordsToSolve || totalIncorrectGuesses >= totalWordsToSolve) {
+  if (wordsSolved >= totalWordsToSolve || incorrectGuesses >= totalWordsToSolve) {
     endGame();
   }
 }

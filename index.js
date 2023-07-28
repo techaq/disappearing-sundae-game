@@ -29,18 +29,12 @@ let selectedWord = "";
 let guessedLetters = [];
 let incorrectGuesses = 0;
 const maxIncorrectGuesses = 5;
+const maxHintsPerRound = 5;
+let hintsUsed=0;
 const alphabet = "abcdefghijklmnopqrstuvwxyz";
 let score = 0; 
 
-function startGame(wordType) {
-  selectedWord = getRandomWord(wordType);
-  guessedLetters = [];
-  incorrectGuesses = 0;
-  createLetterButtons();
-  displayWord();
-  document.getElementById("guessesLeft").style.display = "block";
-  document.getElementById("score").style.display = "block";
-}
+
 
 function getRandomWord(wordType) {
   const wordArray = wordType === "flavors" ? flavorsArray : toppingsArray;
@@ -86,13 +80,41 @@ function checkLetter(letter) {
   }
 }
 
-function showHint () {
-  if(guessedLetters.length < selectedWord.length) {
+function showHint() {
+  if (guessedLetters.length < selectedWord.length && hintsUsed < maxHintsPerRound) {
     const unguessedLetters = selectedWord.split("").filter((letter) => !guessedLetters.includes(letter));
     const hintLetter = unguessedLetters[0];
     guessedLetters.push(hintLetter);
     displayWord();
+    hintsUsed++;
+    checkHintsLimit(); // checks if the hints limit has been reached
   }
+}
+
+function checkHintsLimit() {
+  const hintsLeft = maxHintsPerRound - hintsUsed;
+  const hintButton = document.getElementById("hintButton");
+
+  if (hintsLeft === 0) {
+    hintButton.disabled = true;
+    hintButton.innerText = "No Hints Left";
+  } else {
+    hintButton.innerText = `Show Hint (${hintsLeft} left)`;
+  }
+}
+
+// starts the game
+function startGame(wordType) {
+  selectedWord = getRandomWord(wordType);
+  guessedLetters = [];
+  incorrectGuesses = 0;
+  hintsUsed = 0; // Reset the hints used count when starting a new round
+  createLetterButtons();
+  displayWord();
+  checkHintsLimit(); // check and update the state of hint button
+  document.getElementById("hintButton").disabled = false; // enable the hint button @ start of round
+  document.getElementById("guessesLeft").style.display = "block";
+  document.getElementById("score").style.display = "block";
 }
 
 function checkWinOrLoss() {
@@ -118,7 +140,7 @@ function checkWinOrLoss() {
 }
 
 function endGame() {
-  document.getElementById("sundaeImage").style.display = "none";
+  // document.getElementById("sundaeImage").style.display = "none";
   document.getElementById("letterButtons").style.display = "none";
   document.getElementById("word").style.display = "none";
   document.getElementById("replayButton").style.display = "block";

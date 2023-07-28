@@ -35,15 +35,9 @@ Guess letters by clicking on the provided alphabet buttons.
 If the letter is part of the word, it will fill in the blank spaces. Otherwise, you lose a guess and the sundae melts a little.
 Continue guessing letters until you complete the word or the sundae melts completely.
 
-Contribute:
-We welcome contributions to make "The Disappearing Sundae Game" even better! If you'd like to contribute, please follow the guidelines in the CONTRIBUTING.md file.
-
-
-
 Credits:
 
 Inspired by the joy of ice cream trucks and childhood memories.
-
 
 I hope you enjoy playing "The Disappearing Sundae Game" as much as I loved creating it! 
 

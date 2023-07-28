@@ -13,6 +13,7 @@ body {
 .container {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 100vh;
 }
 
@@ -30,7 +31,7 @@ body {
   align-items: center;
   flex: 1;
 }
-
+/* heading styles */
 h1 {
   color: #f29c9c;
   font-family: "Londrina Shadow", cursive;
@@ -39,6 +40,7 @@ h1 {
   margin-bottom: 20px;
 }
 
+/* sundae styles */
 .sundae-container {
   display: flex;
   justify-content: center;
@@ -62,7 +64,7 @@ h1 {
   transform: translateX(-50%);
   width: 150px;
   height: 70px;
-  background-color: lightblue;
+  background-color: #add8e6;
   border-radius: 50%;
   z-index: 1;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
@@ -110,6 +112,7 @@ h1 {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
+/* options and buttons styles */
 .options-container {
   font-family: "Trirong", serif;
   font-size: 30px;
@@ -133,14 +136,8 @@ button {
   transition: opacity 0.3s ease;
 }
 
-.flavors-button {
-  font-size: 20px;
-  background-color: #f29c9c;
-  color: #b6e6b6;
-  padding: 10px 10px;
-}
-
-.toppings-button {
+.flavors-button,
+.toppings-button  {
   font-size: 20px;
   background-color: #f29c9c;
   color: #b6e6b6;
@@ -152,6 +149,7 @@ button:disabled {
   cursor: not-allowed;
 }
 
+/* game related sytles */
 #word {
   text-align: center;
   font-family: "Londrina Shadow", cursive;
@@ -159,7 +157,8 @@ button:disabled {
   margin-bottom: 20px;
 }
 
-#guessesLeft {
+#guessesLeft,
+#score {
   display: none;
   font-family: "Trirong", serif;
   font-size: 20px;
@@ -169,15 +168,7 @@ button:disabled {
   margin-top: 20px;
 }
 
-#score {
-  display: none;
-  font-family: "Trirong", serif;
-  font-size: 20px;
-  color: #f9ad6a;
-  text-align: left;
-  margin: 20px;
-}
-
+/* right sidebar styles */
 .right-sidebar {
   display: flex;
   flex-direction: column;
@@ -203,11 +194,11 @@ button:disabled {
 
 .hint-button {
   background-color: #f29c9c;
-  color: #b6e6b6;
+  color: #4b2d2a;
 }
 
 .reset-button {
-  background-color: #d2b48c;
+  background-color: #add8e6;
   color: #4b2d2a;
 }
 

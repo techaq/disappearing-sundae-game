@@ -1,3 +1,4 @@
+// flavors array
 const flavorsArray = [
   "vanilla",
   "strawberry",
@@ -8,8 +9,10 @@ const flavorsArray = [
   "cookies n cream",
   "superman",
   "cookie dough",
-  "match"
+  "matcha"
 ];
+
+// toppings array
 const toppingsArray = [
   "sprinkles",
   "peanuts",
@@ -21,6 +24,7 @@ const toppingsArray = [
   "oreo"
 ];
 
+// variables 
 let selectedWord = "";
 let guessedLetters = [];
 let incorrectGuesses = 0;
@@ -130,5 +134,4 @@ function updateScore() {
   document.getElementById("score").innerText = `Score: ${score}`;
 }
 
-// Initial display, hide game-related elements
 updateScore();

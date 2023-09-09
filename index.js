@@ -1,21 +1,28 @@
-// flavors array
+// The Disappearing Sundae Game
+
+// Array of ice cream flavors and toppings
 const flavorsAndToppingsArray = [
-  "vanilla", "strawberry", "chocolate", "neopolitan", "mint chocolate chip",
-  "butter pecan", "cookies n cream", "superman", "cookie dough", "matcha",
-  "sprinkles", "peanuts", "hot fudge", "caramel", "strawberry sauce",
-  "cherry", "whipped cream", "oreo"
+  "vanilla",
+  "strawberry",
+  "chocolate",
+  "neopolitan",
+  "mint chocolate chip",
+  "butter pecan",
+  "cookies n cream",
+  "superman",
+  "cookie dough",
+  "matcha",
+  "sprinkles",
+  "peanuts",
+  "hot fudge",
+  "caramel",
+  "strawberry sauce",
+  "cherry",
+  "whipped cream",
+  "oreo",
 ];
 
-// Function to get a random word from the flavors array
-function getRandomWord() {
-  if (flavorsAndToppingsArray.length === 0) return "";
-  const randomIndex = Math.floor(Math.random() * flavorsAndToppingsArray.length);
-  const word = flavorsAndToppingsArray[randomIndex];
-  flavorsAndToppingsArray.splice(randomIndex, 1); // Remove the word from the array
-  return word;
-}
-
-// variables
+// Game variables
 let selectedWord = "";
 let guessedLetters = [];
 let incorrectGuesses = 0;
@@ -24,7 +31,7 @@ const maxHintsPerRound = 5;
 let hintsUsed = 0;
 const alphabet = "abcdefghijklmnopqrstuvwxyz";
 let score = 0;
-let totalWordsToSolve = 5; // default - can be changed
+let totalWordsToSolve = 5; // Default - can be changed
 let wordsSolved = 0; // Initialize the wordsSolved variable
 
 // Function to update the total words to solve based on the dropdown selection
@@ -36,7 +43,9 @@ function updateWordsToSolve() {
 // Function to get a random word from the flavors array
 function getRandomWord() {
   if (flavorsAndToppingsArray.length === 0) return "";
-  return flavorsAndToppingsArray[Math.floor(Math.random() * flavorsAndToppingsArray.length)];
+  return flavorsAndToppingsArray[
+    Math.floor(Math.random() * flavorsAndToppingsArray.length)
+  ];
 }
 
 // Function to create letter buttons for the game
@@ -69,14 +78,17 @@ function startGame() {
   hintsUsed = 0; // Reset the hints used count when starting a new round
   createLetterButtons();
   displayWord();
-  checkHintsLimit(); // Check and update the state of hint button
+  checkHintsLimit(); // Check and update the state of the hint button
   document.getElementById("hintButton").disabled = false; // Enable the hint button at the start of a round
-  document.getElementById("guessesLeft").innerText = `Guesses Left: ${maxIncorrectGuesses}`;
+  document.getElementById(
+    "guessesLeft"
+  ).innerText = `Guesses Left: ${maxIncorrectGuesses}`;
   document.getElementById("score").innerText = `Score: ${score}`;
-  document.getElementById("hintButton").innerText = `Show Hint (${maxHintsPerRound} left)`;
+  document.getElementById(
+    "hintButton"
+  ).innerText = `Show Hint (${maxHintsPerRound} left)`;
   document.getElementById("replayButton").style.display = "none"; // Hide the replay button at the start of a round
 }
-// startGame();
 
 // Function to display the word with guessed letters
 function displayWord() {
@@ -108,8 +120,13 @@ function checkLetter(letter) {
 
 // Function to show a hint if available
 function showHint() {
-  if (guessedLetters.length < selectedWord.length && hintsUsed < maxHintsPerRound) {
-    const unguessedLetters = selectedWord.split("").filter((letter) => !guessedLetters.includes(letter));
+  if (
+    guessedLetters.length < selectedWord.length &&
+    hintsUsed < maxHintsPerRound
+  ) {
+    const unguessedLetters = selectedWord
+      .split("")
+      .filter((letter) => !guessedLetters.includes(letter));
     const hintLetter = unguessedLetters[0];
     guessedLetters.push(hintLetter);
     displayWord();
@@ -134,12 +151,16 @@ function checkHintsLimit() {
 // Function to check if the player has won or lost
 function checkWinOrLoss() {
   if (guessedLetters.length > 0) {
-    const wrongGuesses = guessedLetters.filter((letter) => !selectedWord.includes(letter));
+    const wrongGuesses = guessedLetters.filter(
+      (letter) => !selectedWord.includes(letter)
+    );
     incorrectGuesses = wrongGuesses.length;
   }
 
   const guessesLeft = maxIncorrectGuesses - incorrectGuesses;
-  document.getElementById("guessesLeft").innerText = `Guesses Left: ${guessesLeft}`;
+  document.getElementById(
+    "guessesLeft"
+  ).innerText = `Guesses Left: ${guessesLeft}`;
 
   if (incorrectGuesses >= maxIncorrectGuesses) {
     // Player has lost the word
@@ -153,7 +174,9 @@ function checkWinOrLoss() {
     updateScore();
     hintsUsed = 0; // Reset the hint count to 0
     document.getElementById("hintButton").disabled = false; // Reset the hint button
-    document.getElementById("hintButton").innerText = `Show Hint (${maxHintsPerRound} left)`; // Update the hint button text
+    document.getElementById(
+      "hintButton"
+    ).innerText = `Show Hint (${maxHintsPerRound} left)`; // Update the hint button text
     endWord();
   }
 }
@@ -170,7 +193,10 @@ function endWord() {
   document.getElementById("hintButton").disabled = false; // Reset the hint button
   document.getElementById("replayButton").style.display = "none";
 
-  if (wordsSolved >= totalWordsToSolve || incorrectGuesses >= totalWordsToSolve) {
+  if (
+    wordsSolved >= totalWordsToSolve ||
+    incorrectGuesses >= totalWordsToSolve
+  ) {
     endGame();
   }
 }
@@ -179,9 +205,13 @@ function endWord() {
 function endGame() {
   // Game over
   if (wordsSolved >= totalWordsToSolve) {
-    alert(`Congratulations! You solved ${wordsSolved} words before the sundae disappeared completely.`);
+    alert(
+      `Congratulations! You solved ${wordsSolved} words before the sundae disappeared completely.`
+    );
   } else {
-    alert(`Game over! You solved ${wordsSolved} words before the sundae disappeared completely.`);
+    alert(
+      `Game over! You solved ${wordsSolved} words before the sundae disappeared completely.`
+    );
   }
 
   document.getElementById("letterButtonsRow1").style.display = "none";
@@ -204,8 +234,12 @@ function resetGame() {
   createLetterButtons();
   displayWord();
   document.getElementById("hintButton").disabled = false;
-  document.getElementById("hintButton").innerText = `Show Hint (${maxHintsPerRound} left)`;
-  document.getElementById("guessesLeft").innerText = `Guesses Left: ${maxIncorrectGuesses}`;
+  document.getElementById(
+    "hintButton"
+  ).innerText = `Show Hint (${maxHintsPerRound} left)`;
+  document.getElementById(
+    "guessesLeft"
+  ).innerText = `Guesses Left: ${maxIncorrectGuesses}`;
 }
 
 // Function to replay the game
